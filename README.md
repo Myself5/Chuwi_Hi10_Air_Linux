@@ -110,21 +110,9 @@ Touchscreen
 The Hi10 Airs Silead touchscreen requires drivers that are not bundled with a Linux install. You can download them here: https://github.com/onitake/gsl-firmware/tree/master/firmware/linux
 See the Readme on how to install them.
 
-These drivers get loaded by the Linux kernel. I submitted a commit to add support for the Hi10 Air to the Linux Kernel and it has been approved, however the commit will only make it into into Linux 5.1. that means until then you need to use a custom Kernel. I'm trying to keep an up-to-date one on my server here: https://dl.myself5.de/Hi10Air
+These drivers get loaded by the Linux kernel. I submitted a commit to add support for the Hi10 Air to the Linux Kernel and it has been approved. The commit is merged in the 5.1 (and newer) Kernel. That means you need to update your kernel for a proper touch support.
 
-Initially you can install it, remove the default kernel and update your grub entries (the last part is important).
-```
-sudo pacman -R linux linux-headers
-sudo pacman -U linux-chewbacca*version*.tar linux-chewbacca-headers*version*.tar
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-Every followup update can be done by only executing the install part:
-```
-sudo pacman -U linux-chewbacca*version*.tar linux-chewbacca-headers*version*.tar
-```
-
-Once Linux 5.1 is released you can go back to the official kernel by running:
+If you previously used my Kernel you can go back to the official kernel by running:
 ```
 sudo pacman -R linux-chewbacca linux-chewbacca-headers
 sudo pacman -Syu linux linux-headers
